@@ -645,20 +645,6 @@ class Darknet(nn.Module):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def load_classes(path='./coco.names'):
     """
     从文件里读取所有类名
@@ -667,81 +653,5 @@ def load_classes(path='./coco.names'):
     names = fp.read().split("\n")[:-1]
     return names
 
-
-
-# def show(tarSet):
-#     names = load_classes()
-#     for img, labels in tarSet:
-#         img = xp.transpose(img, (1,2,0))
-#         h, w, _ = img.shape
-#         ids = labels[:, 0]
-#         x1 = w * (labels[:, 1] - labels[:, 3] / 2)  # top-left x in original image size
-#         y1 = h * (labels[:, 2] - labels[:, 4] / 2)  # top-left y in original image size
-#         x2 = w * (labels[:, 1] + labels[:, 3] / 2)  # bot-right x in original image size
-#         y2 = h * (labels[:, 2] + labels[:, 4] / 2)  # bot-right y in original image size
-#
-#         x1 = x1.astype(xp.int32)
-#         y1 = y1.astype(xp.int32)
-#         x2 = x2.astype(xp.int32)
-#         y2 = y2.astype(xp.int32)
-#
-#         colors = [opencvlib.COLOR_BLUE, opencvlib.COLOR_GREEN, opencvlib.COLOR_RED]
-#         import random
-#         print("---------------------")
-#         for a,b,c,d,id in zip(x1,y1,x2,y2,ids):
-#             name = names[int(id)]
-#             color = random.choice(colors)
-#             cv2.rectangle(img, (a, b), (c, d), color, 2)
-#             t_size = cv2.getTextSize(name, cv2.FONT_HERSHEY_PLAIN, 1, 1)[0]
-#             cv2.putText(img, name, (a, b + t_size[1] + 4), cv2.FONT_HERSHEY_PLAIN, 1, [225, 255, 255], 1);
-#
-#         cv2.imshow("ori", img)
-#
-#         opencvlib.WaitEscToExit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-# model = Darknet("./yolov3.cfg")
-# model.load_weights("/home/qs/opt/yolo_v3/yolov3.weights")
-# img = cv2.imread("../samples/giraffe.jpg")
-# img = opencvlib.Resize(img, 416, 416)
-# ori = img
-# img = xp.transpose(img, (2, 0, 1))
-# c, h, w = img.shape
-# img = img.reshape(1, c, h, w)
-# img = torch.FloatTensor(img)
-#
-#
-# pred, _ = model(img)
-#
-# cx = pred[:, 0]
-# cy = pred[:, 1]
-# bw = pred[:, 2]
-# bh = pred[:, 3]
-#
-# x1 = (cx - bw / 2).astype(xp.int32)  # top-left x in original image size
-# y1 = (cy - bh / 2).astype(xp.int32)  # top-left y in original image size
-# x2 = (cx + bw / 2).astype(xp.int32)  # bot-right x in original image size
-# y2 = (cy + bh / 2).astype(xp.int32)  # bot-right y in original image size
-#
-# img = ori
-# img = opencvlib.Resize(img, 416, 416)
-#
-#
-# for a,b,c,d in zip(x1,y1,x2,y2):
-#     cv2.rectangle(img, (a, b), (c, d), opencvlib.COLOR_BLUE, 2)
-#
-# cv2.imshow("ori", img)
-# opencvlib.WaitEscToExit()
 
 
